@@ -13,37 +13,40 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModelProvider
 import com.ilya.sporttest.ui.theme.MatchCard
 import com.ilya.sporttest.ui.theme.SportTestTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<MainViewModel>()
+    val viewModel by lazy { ViewModelProvider(this)[MainViewModel::class.java] }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel.loadMatches()
         setContent {
-            Test(viewModel)
+            MatchCard(viewModel)
         }
     }
 }
 
-@Composable
-fun Test(viewModel: MainViewModel) {
-    SportTestTheme {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colors.primary)
-        ) {
-            LazyColumn {
-                repeat(20) {
-                    item {
-                        MatchCard(viewModel)
-                    }
-                }
-
-            }
-        }
-    }
-}
+//@Composable
+//fun Test(viewModel: MainViewModel) {
+//    SportTestTheme {
+//        Box(
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .background(MaterialTheme.colors.primary)
+//        ) {
+//            LazyColumn {
+//                repeat(20) {
+//                    item {
+//                        MatchCard(viewModel)
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
+//}
