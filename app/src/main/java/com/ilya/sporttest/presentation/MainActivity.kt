@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
 import com.ilya.sporttest.ui.theme.MatchCard
@@ -26,27 +28,20 @@ class MainActivity : ComponentActivity() {
 
         viewModel.loadMatches()
         setContent {
-            MatchCard(viewModel)
+            SportTestTheme {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colors.primary)
+                ) {
+                    val matches = viewModel.matches.observeAsState(listOf())
+                    LazyColumn {
+                        items(matches.value) { match ->
+                            MatchCard(match = match)
+                        }
+                    }
+                }
+            }
         }
     }
 }
-
-//@Composable
-//fun Test(viewModel: MainViewModel) {
-//    SportTestTheme {
-//        Box(
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .background(MaterialTheme.colors.primary)
-//        ) {
-//            LazyColumn {
-//                repeat(20) {
-//                    item {
-//                        MatchCard(viewModel)
-//                    }
-//                }
-//
-//            }
-//        }
-//    }
-//}
