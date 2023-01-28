@@ -16,30 +16,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
+import com.ilya.sporttest.ui.theme.MainScreen
 import com.ilya.sporttest.ui.theme.MatchCard
 import com.ilya.sporttest.ui.theme.SportTestTheme
 
 class MainActivity : ComponentActivity() {
 
-    val viewModel by lazy { ViewModelProvider(this)[MainViewModel::class.java] }
+    private val viewModel by lazy { ViewModelProvider(this)[MainViewModel::class.java] }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        viewModel.loadMatches()
+        viewModel.loadMatches("today")
         setContent {
             SportTestTheme {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(MaterialTheme.colors.primary)
-                ) {
-                    val matches = viewModel.matches.observeAsState(listOf())
-                    LazyColumn {
-                        items(matches.value) { match ->
-                            MatchCard(match = match)
-                        }
-                    }
+                MainScreen(viewModel = viewModel) {
+
                 }
             }
         }

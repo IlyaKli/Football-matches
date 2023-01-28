@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 class MatchDto (
 
     @SerializedName("id")
-    val id: String,
+    val id: Int,
 
     @SerializedName("status")
     val status: Int,

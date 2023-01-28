@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SportTest</string>
+    <string name="navigation_item_today">Сегодня</string>
+    <string name="navigation_item_yesterday">Вчера</string>
+    <string name="navigation_item_tomorrow">Завтра</string>
 </resources>
