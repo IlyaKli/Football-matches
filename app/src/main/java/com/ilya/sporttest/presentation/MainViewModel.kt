@@ -1,6 +1,5 @@
 package com.ilya.sporttest.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,11 +19,9 @@ class MainViewModel() : ViewModel() {
     private val _matches = MutableLiveData<List<Match>>()
     val matches: LiveData<List<Match>> = _matches
 
-    fun loadMatches() {
+    fun loadMatches(day: String) {
         viewModelScope.launch {
-            val massage = loadMatchesListUseCase("tomorrow")
-            _matches.value = massage.matches
-            Log.d("network", massage.matches[0].teams.away.image)
+            _matches.value = loadMatchesListUseCase(day).matches
         }
     }
 }

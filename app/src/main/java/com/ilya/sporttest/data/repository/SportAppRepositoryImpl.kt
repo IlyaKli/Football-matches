@@ -11,6 +11,6 @@ class SportAppRepositoryImpl : SportAppRepository {
     private val mapper = SportMapper()
 
     override suspend fun loadMatchesList(day: String): MatchesResponse {
-        return mapper.mapMatchesResponseDtoToEntity(apiService.matchLoad())
+        return mapper.mapMatchesResponseDtoToEntity(apiService.matchLoad(day))
     }
 }

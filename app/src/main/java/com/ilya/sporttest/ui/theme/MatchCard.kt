@@ -2,6 +2,7 @@ package com.ilya.sporttest.ui.theme
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -12,14 +13,21 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ilya.sporttest.domain.model.Match
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MatchCard(match: Match) {
+fun MatchCard(
+    match: Match,
+    onMatchCardClickListener: (matchId: Int) -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
         elevation = 2.dp,
-        backgroundColor = MaterialTheme.colors.background
+        backgroundColor = MaterialTheme.colors.background,
+        onClick = {
+            onMatchCardClickListener(match.id)
+        }
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

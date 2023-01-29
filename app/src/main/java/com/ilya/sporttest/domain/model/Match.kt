@@ -1,7 +1,7 @@
 package com.ilya.sporttest.domain.model
 
 data class Match(
-    val id: String,
+    val id: Int,
     val status: Int,
     val league: League,
     val teams: TeamsList,
