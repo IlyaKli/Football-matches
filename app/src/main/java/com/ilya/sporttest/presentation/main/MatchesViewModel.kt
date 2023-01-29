@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.ilya.sporttest.data.repository.SportAppRepositoryImpl
 import com.ilya.sporttest.domain.model.Match
 import com.ilya.sporttest.domain.usecase.LoadMatchesListUseCase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MatchesViewModel() : ViewModel() {
@@ -18,46 +19,42 @@ class MatchesViewModel() : ViewModel() {
 
     val loadMatchesListUseCase = LoadMatchesListUseCase(repository)
 
-    private val _loginState = MutableLiveData<ApplicationLoginState>(ApplicationLoginState.Initial)
-    val loginState: LiveData<ApplicationLoginState> = _loginState
+    private val _mainScreenState = MutableLiveData<ApplicationLoginState>(ApplicationLoginState.Initial)
+    val mainScreenState: LiveData<ApplicationLoginState> = _mainScreenState
 
-//    private val initialState = MatchesScreenState.Matches(_matches.value)
-
-    private val _screenState = MutableLiveData<MatchesScreenState>()
+    private val _screenState = MutableLiveData<MatchesScreenState>(MatchesScreenState.Initial)
     val screenState: LiveData<MatchesScreenState> = _screenState
-
-//    private var savedState: MatchesScreenState? = initialState
 
     private val _matches = MutableLiveData<List<Match>>()
     val matches: LiveData<List<Match>> = _matches
 
-//    fun showMatchInfoScreen(match: Match) {
-//        savedState = _screenState.value
-////        _screenState.value = MatchesScreenState.MatchInfo(match)
-//    }
-//
-//    fun closeMatchInfoScreen() {
-//        _screenState.value = savedState
-//    }
-
     fun loadMatches(day: String) {
+        _screenState.value = MatchesScreenState.Loading
         try {
             viewModelScope.launch {
-                _matches.value = loadMatchesListUseCase(day).matches
+                _screenState.value = MatchesScreenState.Matches(loadMatchesListUseCase(day).matches)
             }
         } catch (e: Exception) {
             Log.d("ExceptionInLoadMatches", e.message.toString())
+        } finally {
+
         }
     }
 
     fun initialLoadMatches() {
         try {
             viewModelScope.launch {
-                _matches.value = loadMatchesListUseCase("today").matches
-                _loginState.value = ApplicationLoginState.Login
+                _screenState.value = MatchesScreenState.Matches(loadMatchesListUseCase("today").matches)
+                _mainScreenState.value = ApplicationLoginState.Login
             }
         } catch (e: Exception) {
             Log.d("ExceptionInLoadMatches", e.message.toString())
+        } finally {
+
         }
+    }
+
+    fun openWebScreen() {
+        _mainScreenState.value = ApplicationLoginState.Web
     }
 }

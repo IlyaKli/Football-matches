@@ -4,5 +4,7 @@ sealed class ApplicationLoginState {
 
     object Login: ApplicationLoginState()
 
+    object Web: ApplicationLoginState()
+
     object Initial: ApplicationLoginState()
 }

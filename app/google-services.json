@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "888045998650",
+    "project_id": "sport-app-3ef95",
+    "storage_bucket": "sport-app-3ef95.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888045998650:android:7084a120a21ab7335c9b03",
+        "android_client_info": {
+          "package_name": "com.ilya.sporttest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888045998650-nde4uq653ffavjjqflb86llh4198nula.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqqAvu2inTkAJMDXwhPSKyY7XYXvQm_3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888045998650-nde4uq653ffavjjqflb86llh4198nula.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,24 +1,32 @@
 package com.ilya.sporttest.presentation.main
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.ilya.sporttest.R
 import com.ilya.sporttest.navigation.AppNavGraph
 import com.ilya.sporttest.navigation.rememberNavigationState
 import com.ilya.sporttest.presentation.matchinfo.MatchInfoScreen
+import com.ilya.sporttest.presentation.web.WebScreen
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    onFloatingActionButtonClickListener: () -> Unit
+) {
 
     val navigationState = rememberNavigationState()
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = {  }) {
+            FloatingActionButton(onClick = { onFloatingActionButtonClickListener() }) {
                 Icon(Icons.Filled.Search, contentDescription = null)
             }
         },
@@ -37,7 +45,7 @@ fun MainScreen() {
                         selected = currentRout == item.screen.route,
                         onClick = { navigationState.navigateTo(item.screen.route) },
                         icon = {
-                            Icon(item.icon, contentDescription = null)
+                            Icon(painter = painterResource(id = item.iconId), contentDescription = null, modifier = Modifier.size(25.dp))
                         },
                         label = {
                             Text(text = stringResource(id = item.titleResId))
