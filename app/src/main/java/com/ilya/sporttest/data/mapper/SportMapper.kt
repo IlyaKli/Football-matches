@@ -2,8 +2,9 @@ package com.ilya.sporttest.data.mapper
 
 import com.ilya.sporttest.data.network.model.*
 import com.ilya.sporttest.domain.model.*
+import javax.inject.Inject
 
-class SportMapper {
+class SportMapper @Inject constructor() {
 
     fun mapMatchesResponseDtoToEntity(dto: MatchesResponseDto) = MatchesResponse(
         matches = mapMatchDtoListToEntityList(dto.matches)

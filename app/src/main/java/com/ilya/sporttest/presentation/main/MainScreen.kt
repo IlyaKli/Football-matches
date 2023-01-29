@@ -11,14 +11,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.ilya.sporttest.R
 import com.ilya.sporttest.navigation.AppNavGraph
 import com.ilya.sporttest.navigation.rememberNavigationState
 import com.ilya.sporttest.presentation.matchinfo.MatchInfoScreen
-import com.ilya.sporttest.presentation.web.WebScreen
 
 @Composable
 fun MainScreen(
+    viewModel: MatchesViewModel,
     onFloatingActionButtonClickListener: () -> Unit
 ) {
 
@@ -56,17 +55,17 @@ fun MainScreen(
                 }
             }
         }
-    ) { paddingValues ->
+    ) { padding ->
 
         AppNavGraph(
             navHostController = navigationState.navHostController,
-            todayScreenContent = { MatchListScreen(day = "today") {
+            todayScreenContent = { MatchListScreen(viewModel = viewModel, day = "today") {
                 navigationState.navigateToMatchInfo(it)
             } },
-            yesterdayScreenContent = { MatchListScreen(day = "yesterday") {
+            yesterdayScreenContent = { MatchListScreen(viewModel = viewModel, day = "yesterday") {
                 navigationState.navigateToMatchInfo(it)
             } },
-            tomorrowScreenContent = { MatchListScreen(day = "tomorrow") {
+            tomorrowScreenContent = { MatchListScreen(viewModel = viewModel, day = "tomorrow") {
                 navigationState.navigateToMatchInfo(it)
             } },
             matchInfoScreenContent = { match ->
