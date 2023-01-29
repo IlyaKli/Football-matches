@@ -7,8 +7,6 @@ import com.ilya.sporttest.domain.model.Match
 sealed class Screen(
     val route: String
 ) {
-//    object Splash: Screen(ROUTE_SPLASH)
-
     object MatchListToday: Screen(ROUTE_MATCH_LIST_TODAY)
 
     object MatchListYesterday: Screen(ROUTE_MATCH_LIST_YESTERDAY)
@@ -36,8 +34,6 @@ sealed class Screen(
     companion object {
 
         const val KEY_MATCH = "match"
-
-//        const val ROUTE_SPLASH = "splash"
 
         const val ROUTE_MATCH_LIST_TODAY = "match_list_today"
 

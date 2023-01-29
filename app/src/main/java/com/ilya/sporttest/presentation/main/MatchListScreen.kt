@@ -1,4 +1,4 @@
-package com.ilya.sporttest.ui.theme
+package com.ilya.sporttest.presentation.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -11,7 +11,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ilya.sporttest.domain.model.Match
-import com.ilya.sporttest.presentation.MatchesViewModel
 
 @Composable
 fun MatchListScreen(

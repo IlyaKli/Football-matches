@@ -1,36 +1,24 @@
-package com.ilya.sporttest.ui.theme
+package com.ilya.sporttest.presentation.matchinfo
 
-import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.ilya.sporttest.domain.model.*
-import com.ilya.sporttest.presentation.MatchInfoViewModel
+import com.ilya.sporttest.domain.model.Match
 
 @Composable
 fun MatchInfoScreen(
     match: Match,
     onBackPressed: () -> Unit
 ) {
-
-//    val screenState = viewModel.screenState.observeAsState(MatchInfoScreenState.Initial)
-//    val currentState = screenState.value
-//    if (currentState is MatchInfoScreenState.MatchInfo) {
         Box(
             Modifier
                 .fillMaxSize()

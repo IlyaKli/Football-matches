@@ -1,4 +1,4 @@
-package com.ilya.sporttest
+package com.ilya.sporttest.presentation.main
 
 sealed class ApplicationLoginState {
 

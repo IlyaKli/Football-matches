@@ -1,4 +1,4 @@
-package com.ilya.sporttest.ui.theme
+package com.ilya.sporttest.presentation.main
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
