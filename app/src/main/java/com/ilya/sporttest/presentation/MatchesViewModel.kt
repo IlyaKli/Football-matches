@@ -1,9 +1,11 @@
 package com.ilya.sporttest.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ilya.sporttest.ApplicationLoginState
 import com.ilya.sporttest.data.repository.SportAppRepositoryImpl
 import com.ilya.sporttest.domain.model.Match
 import com.ilya.sporttest.domain.usecase.LoadMatchesListUseCase
@@ -17,6 +19,9 @@ class MatchesViewModel() : ViewModel() {
     val repository = SportAppRepositoryImpl()
 
     val loadMatchesListUseCase = LoadMatchesListUseCase(repository)
+
+    private val _loginState = MutableLiveData<ApplicationLoginState>(ApplicationLoginState.Initial)
+    val loginState: LiveData<ApplicationLoginState> = _loginState
 
 //    private val initialState = MatchesScreenState.Matches(_matches.value)
 
@@ -38,8 +43,23 @@ class MatchesViewModel() : ViewModel() {
 //    }
 
     fun loadMatches(day: String) {
-        viewModelScope.launch {
-            _matches.value = loadMatchesListUseCase(day).matches
+        try {
+            viewModelScope.launch {
+                _matches.value = loadMatchesListUseCase(day).matches
+            }
+        } catch (e: Exception) {
+            Log.d("ExceptionInLoadMatches", e.message.toString())
+        }
+    }
+
+    fun initialLoadMatches() {
+        try {
+            viewModelScope.launch {
+                _matches.value = loadMatchesListUseCase("today").matches
+                _loginState.value = ApplicationLoginState.Login
+            }
+        } catch (e: Exception) {
+            Log.d("ExceptionInLoadMatches", e.message.toString())
         }
     }
 }

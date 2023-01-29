@@ -14,7 +14,7 @@ import com.ilya.sporttest.presentation.MatchInfoViewModel
 
 @Composable
 fun MainScreen() {
-    val viewModel: MatchInfoViewModel = viewModel()
+//    val viewModel: MatchInfoViewModel = viewModel()
 
 //    val screenState = viewModel.screenState.observeAsState(MatchesScreenState.Initial)
 

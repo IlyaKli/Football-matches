@@ -16,8 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ilya.sporttest.ApplicationLoginState
 import com.ilya.sporttest.ui.theme.MainScreen
 import com.ilya.sporttest.ui.theme.MatchCard
+import com.ilya.sporttest.ui.theme.SplashScreen
 import com.ilya.sporttest.ui.theme.SportTestTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +30,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SportTestTheme {
-                MainScreen()
+                val viewModel: MatchesViewModel = viewModel()
+                val loginState =viewModel.loginState.observeAsState(ApplicationLoginState.Initial)
+                viewModel.initialLoadMatches()
+
+                when(loginState.value) {
+                    is ApplicationLoginState.Login -> {
+                        MainScreen()
+                    }
+                    else -> {
+                        SplashScreen()
+                    }
+                }
             }
         }
     }
