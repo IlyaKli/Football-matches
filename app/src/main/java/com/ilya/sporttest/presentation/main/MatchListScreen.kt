@@ -1,6 +1,7 @@
 package com.ilya.sporttest.presentation.main
 
 import android.util.Log
+import androidx.activity.OnBackPressedCallback
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,10 +18,10 @@ import com.ilya.sporttest.domain.model.Match
 
 @Composable
 fun MatchListScreen(
+    viewModel: MatchesViewModel,
     day: String,
     onMatchClickListener: (Match) -> Unit
 ) {
-    val viewModel: MatchesViewModel = viewModel()
     val screenState = viewModel.screenState.observeAsState(MatchesScreenState.Initial)
     when (val currentState = screenState.value) {
         is MatchesScreenState.Initial -> {

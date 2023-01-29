@@ -10,23 +10,17 @@ import com.ilya.sporttest.domain.model.Match
 import com.ilya.sporttest.domain.usecase.LoadMatchesListUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MatchesViewModel() : ViewModel() {
-
-
-
-    val repository = SportAppRepositoryImpl()
-
-    val loadMatchesListUseCase = LoadMatchesListUseCase(repository)
+class MatchesViewModel@Inject constructor (
+    private val loadMatchesListUseCase: LoadMatchesListUseCase
+) : ViewModel() {
 
     private val _mainScreenState = MutableLiveData<ApplicationLoginState>(ApplicationLoginState.Initial)
     val mainScreenState: LiveData<ApplicationLoginState> = _mainScreenState
 
     private val _screenState = MutableLiveData<MatchesScreenState>(MatchesScreenState.Initial)
     val screenState: LiveData<MatchesScreenState> = _screenState
-
-    private val _matches = MutableLiveData<List<Match>>()
-    val matches: LiveData<List<Match>> = _matches
 
     fun loadMatches(day: String) {
         _screenState.value = MatchesScreenState.Loading
