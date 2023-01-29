@@ -1,8 +1,4 @@
-package com.ilya.sporttest
-
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.ilya.sporttest.presentation.MatchesViewModel
+package com.ilya.sporttest.presentation.main
 
 //class MatchesViewModelFactory(
 //    private val day: String

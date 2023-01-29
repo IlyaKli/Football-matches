@@ -1,4 +1,4 @@
-package com.ilya.sporttest.ui.theme
+package com.ilya.sporttest.presentation.main
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -6,28 +6,13 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.ilya.sporttest.navigation.AppNavGraph
 import com.ilya.sporttest.navigation.rememberNavigationState
-import com.ilya.sporttest.presentation.MatchInfoViewModel
+import com.ilya.sporttest.presentation.matchinfo.MatchInfoScreen
 
 @Composable
 fun MainScreen() {
-//    val viewModel: MatchInfoViewModel = viewModel()
-
-//    val screenState = viewModel.screenState.observeAsState(MatchesScreenState.Initial)
-
-//    when (val currentState = screenState.value) {
-//        is MatchesScreenState.Matches -> {
-//            MatchListScreen(day = "today") {
-//
-//            }
-//        }
-//        is MatchesScreenState.Initial -> {
-//
-//        }
-//    }
 
     val navigationState = rememberNavigationState()
 

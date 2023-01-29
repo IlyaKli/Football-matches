@@ -1,15 +1,13 @@
-package com.ilya.sporttest.presentation
+package com.ilya.sporttest.presentation.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ilya.sporttest.ApplicationLoginState
 import com.ilya.sporttest.data.repository.SportAppRepositoryImpl
 import com.ilya.sporttest.domain.model.Match
 import com.ilya.sporttest.domain.usecase.LoadMatchesListUseCase
-import com.ilya.sporttest.ui.theme.MatchesScreenState
 import kotlinx.coroutines.launch
 
 class MatchesViewModel() : ViewModel() {

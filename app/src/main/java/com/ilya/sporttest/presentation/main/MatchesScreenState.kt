@@ -1,4 +1,4 @@
-package com.ilya.sporttest.ui.theme
+package com.ilya.sporttest.presentation.main
 
 import com.ilya.sporttest.domain.model.Match
 

@@ -1,8 +1,6 @@
 package com.ilya.sporttest.data.network.model
 
 import com.google.gson.annotations.SerializedName
-import com.ilya.sporttest.domain.model.Time
-import com.ilya.sporttest.domain.model.Weather
 
 class MatchDto (
 
