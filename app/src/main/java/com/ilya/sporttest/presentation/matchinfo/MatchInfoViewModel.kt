@@ -9,7 +9,4 @@ class MatchInfoViewModel : ViewModel() {
 
     private val _screenState = MutableLiveData<MatchInfoScreenState>(MatchInfoScreenState.Initial)
     val screenState: LiveData<MatchInfoScreenState> = _screenState
-
-
-    val match = MutableLiveData<Match>()
 }

@@ -6,6 +6,8 @@ sealed class MatchesScreenState {
 
     object Initial: MatchesScreenState()
 
+    object Loading: MatchesScreenState()
+
     data class Matches(val matches: List<Match>): MatchesScreenState()
 
 

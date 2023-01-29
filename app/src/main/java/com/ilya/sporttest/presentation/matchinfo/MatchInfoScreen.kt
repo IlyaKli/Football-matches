@@ -23,6 +23,7 @@ fun MatchInfoScreen(
             Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colors.primary)
+                .padding(top = 10.dp)
         ) {
 
             Column(
