@@ -4,38 +4,32 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+import com.ilya.sporttest.domain.model.Match
 
 @Composable
 fun AppNavGraph(
     navHostController: NavHostController,
-    splashScreenContent: @Composable () -> Unit,
     todayScreenContent: @Composable () -> Unit,
     yesterdayScreenContent: @Composable () -> Unit,
     tomorrowScreenContent: @Composable () -> Unit,
-    matchInfoScreenContent: @Composable () -> Unit,
-    webScreenContent: @Composable () -> Unit
+    matchInfoScreenContent: @Composable (Match) -> Unit
 ) {
     NavHost(
         navController = navHostController,
-        startDestination = Screen.Splash.route
+        startDestination = Screen.Today.route
     ) {
-        composable(Screen.Splash.route) {
-            splashScreenContent()
-        }
-        composable(Screen.MatchListToday.route) {
-            todayScreenContent()
-        }
-        composable(Screen.MatchListYesterday.route) {
-            yesterdayScreenContent()
-        }
-        composable(Screen.MatchListTomorrow.route) {
-            tomorrowScreenContent()
-        }
-        composable(Screen.MatchInfo.route) {
-            matchInfoScreenContent()
-        }
-        composable(Screen.Web.route) {
-            webScreenContent()
-        }
+        todayScreenNavGraph(
+            todayScreenContent = todayScreenContent,
+            matchInfoScreenContent = matchInfoScreenContent
+        )
+        yesterdayScreenNavGraph(
+            yesterdayScreenContent = yesterdayScreenContent,
+            matchInfoScreenContent = matchInfoScreenContent
+        )
+        tomorrowScreenNavGraph(
+            tomorrowScreenContent = tomorrowScreenContent,
+            matchInfoScreenContent = matchInfoScreenContent
+        )
     }
 }

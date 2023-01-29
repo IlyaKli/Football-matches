@@ -1,11 +1,16 @@
 package com.ilya.sporttest.data.network.model
 
 import com.google.gson.annotations.SerializedName
+import com.ilya.sporttest.domain.model.Time
+import com.ilya.sporttest.domain.model.Weather
 
 class MatchDto (
 
     @SerializedName("id")
     val id: Int,
+
+    @SerializedName("status_name")
+    val statusName: String,
 
     @SerializedName("status")
     val status: Int,
@@ -17,5 +22,17 @@ class MatchDto (
     val teams: TeamsListDto,
 
     @SerializedName("scores")
-    val scores: ScoreDto
+    val scores: ScoreDto,
+
+    @SerializedName("group_name")
+    val groupName: String,
+
+    @SerializedName("week")
+    val week: String,
+
+    @SerializedName("time")
+    val time: TimeDto,
+
+    @SerializedName("weather_report")
+    val weather: WeatherDto?
 )

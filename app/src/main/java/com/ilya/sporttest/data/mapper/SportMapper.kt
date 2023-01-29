@@ -18,13 +18,35 @@ class SportMapper {
     private fun mapMatchDtoToEntity(dto: MatchDto) = Match(
         id = dto.id,
         status = dto.status,
+        statusName = dto.statusName,
         league = mapLeagueDtoToEntity(dto.league),
         teams = mapTeamsListDtoToEntity(dto.teams),
-        scores = mapScoreDtoToEntity(dto.scores)
+        scores = mapScoreDtoToEntity(dto.scores),
+        time = mapTimeDtoToEntity(dto.time),
+        week = dto.week,
+        groupName = dto.groupName,
+        weather = dto.weather?.let { mapWeatherDtoToEntity(it) }
     )
 
     private fun mapLeagueDtoToEntity(dto: LeagueDto) = League(
-        name = dto.name
+        name = dto.name,
+        countryName = dto.countryName,
+        countryFlagImageUrl = dto.countryFlagImageUrl
+    )
+
+    private fun mapTimeDtoToEntity(dto: TimeDto) = Time(
+        time = dto.time,
+        timezone = dto.timezone
+    )
+
+    private fun mapWeatherDtoToEntity(dto: WeatherDto) = Weather(
+        description = dto.description,
+        temperature = mapTemperatureDtoToEntity(dto.temperature)
+    )
+
+    private fun mapTemperatureDtoToEntity(dto: TemperatureDto) = Temperature(
+        celsius = dto.celsius,
+        fahrenheit = dto.fahrenheit
     )
 
     private fun mapTeamsListDtoToEntity(dto: TeamsListDto) = TeamsList(

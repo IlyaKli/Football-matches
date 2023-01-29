@@ -1,6 +1,5 @@
 package com.ilya.sporttest.ui.theme
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,13 +9,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import com.ilya.sporttest.presentation.MainViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ilya.sporttest.domain.model.Match
+import com.ilya.sporttest.presentation.MatchesViewModel
 
 @Composable
 fun MatchListScreen(
-    viewModel: MainViewModel,
-    day: String
+    day: String,
+    onMatchClickListener: (Match) -> Unit
 ) {
+    val viewModel: MatchesViewModel = viewModel()
     viewModel.loadMatches(day)
 
     Box(
@@ -30,7 +32,7 @@ fun MatchListScreen(
                 MatchCard(
                     match = match,
                     onMatchCardClickListener = {
-                        Log.d("clickCard", it.toString())
+                        onMatchClickListener(match)
                     }
                 )
             }

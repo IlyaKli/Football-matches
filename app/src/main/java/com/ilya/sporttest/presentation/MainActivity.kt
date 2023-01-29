@@ -22,17 +22,12 @@ import com.ilya.sporttest.ui.theme.SportTestTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by lazy { ViewModelProvider(this)[MainViewModel::class.java] }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.loadMatches("today")
         setContent {
             SportTestTheme {
-                MainScreen(viewModel = viewModel) {
-
-                }
+                MainScreen()
             }
         }
     }
