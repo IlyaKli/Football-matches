@@ -16,7 +16,7 @@ class ApiFactory {
             .client(httpLoggingInterceptor())
             .build()
 
-        val apiService = retrofit.create(ApiService::class.java)
+        val apiService = retrofit.create(ApiService::class.java) ?: throw RuntimeException("Api service = null in retrofit create")
 
         private fun httpLoggingInterceptor(): OkHttpClient {
             val httpLoggingInterceptor = HttpLoggingInterceptor()

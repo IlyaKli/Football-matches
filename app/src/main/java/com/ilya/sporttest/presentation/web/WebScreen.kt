@@ -4,8 +4,6 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.viewinterop.AndroidView
 
@@ -13,7 +11,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 fun WebScreen(
     onBackPressedListener: () -> Unit
 ) {
-    BackHandler() {
+    BackHandler {
         onBackPressedListener()
     }
 

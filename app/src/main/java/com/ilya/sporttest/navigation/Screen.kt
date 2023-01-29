@@ -28,8 +28,6 @@ sealed class Screen(
     object Yesterday: Screen(ROUTE_YESTERDAY)
 
     object Tomorrow: Screen(ROUTE_TOMORROW)
-//
-//    object Web: Screen(ROUTE_WEB)
 
     companion object {
 
@@ -48,8 +46,6 @@ sealed class Screen(
         const val ROUTE_TOMORROW = "tomorrow"
 
         const val ROUTE_MATCH_INFO = "info/{$KEY_MATCH}"
-//
-//        const val ROUTE_WEB = "web"
     }
 }
 

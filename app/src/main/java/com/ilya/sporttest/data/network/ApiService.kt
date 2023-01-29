@@ -2,7 +2,6 @@ package com.ilya.sporttest.data.network
 
 import com.ilya.sporttest.data.network.model.MatchesResponseDto
 import retrofit2.http.GET
-import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface ApiService {

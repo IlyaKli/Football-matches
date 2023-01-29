@@ -1,7 +1,6 @@
 package com.ilya.sporttest.data.repository
 
 import com.ilya.sporttest.data.mapper.SportMapper
-import com.ilya.sporttest.data.network.ApiFactory
 import com.ilya.sporttest.data.network.ApiService
 import com.ilya.sporttest.domain.model.MatchesResponse
 import com.ilya.sporttest.domain.repository.SportAppRepository

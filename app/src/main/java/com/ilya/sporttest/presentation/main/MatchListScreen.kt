@@ -1,7 +1,6 @@
 package com.ilya.sporttest.presentation.main
 
 import android.util.Log
-import androidx.activity.OnBackPressedCallback
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ilya.sporttest.domain.model.Match
 
 @Composable
@@ -36,7 +34,7 @@ fun MatchListScreen(
             }
         }
         is MatchesScreenState.Loading -> {
-            loadingInfo()
+            LoadingInfo()
         }
     }
 }
@@ -56,7 +54,6 @@ fun MatchList(
                 MatchCard(
                     match = match,
                     onMatchCardClickListener = {
-                        Log.d("matchinfoscreen", match.toString())
                         onMatchClickListener(match)
                     }
                 )
@@ -66,7 +63,7 @@ fun MatchList(
 }
 
 @Composable
-fun loadingInfo() {
+fun LoadingInfo() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

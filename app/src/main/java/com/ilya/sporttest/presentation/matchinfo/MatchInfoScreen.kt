@@ -1,5 +1,6 @@
 package com.ilya.sporttest.presentation.matchinfo
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -7,11 +8,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.ilya.sporttest.R
 import com.ilya.sporttest.domain.model.Match
 
 @Composable
@@ -19,6 +22,10 @@ fun MatchInfoScreen(
     match: Match,
     onBackPressed: () -> Unit
 ) {
+
+    BackHandler {
+        onBackPressed()
+    }
         Box(
             Modifier
                 .fillMaxSize()
@@ -85,7 +92,7 @@ fun MatchInfoScreen(
                     }
                 }
                 Text(
-                    text = "Статус матча",
+                    text = stringResource(R.string.match_status_text),
                     color = MaterialTheme.colors.onPrimary,
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
@@ -97,7 +104,7 @@ fun MatchInfoScreen(
                     color = MaterialTheme.colors.onPrimary
                 )
                 Text(
-                    text = "Лига",
+                    text = stringResource(R.string.liga_title_text),
                     fontSize = 30.sp,
                     color = MaterialTheme.colors.onPrimary,
                     fontWeight = FontWeight.Bold,
@@ -113,7 +120,7 @@ fun MatchInfoScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Название лиги",
+                        text = stringResource(R.string.liga_name_text),
                         textAlign = TextAlign.Start,
                         color = MaterialTheme.colors.onPrimary,
                         modifier = Modifier
@@ -136,7 +143,7 @@ fun MatchInfoScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Страна лиги",
+                        text = stringResource(R.string.country_liga_text),
                         textAlign = TextAlign.Start,
                         color = MaterialTheme.colors.onPrimary,
                         modifier = Modifier
@@ -146,7 +153,8 @@ fun MatchInfoScreen(
                         model = match.league.countryFlagImageUrl,
                         contentDescription = null,
                         modifier = Modifier
-                            .size(60.dp)
+                            .size(50.dp)
+                            .weight(1f)
                     )
                 }
 
@@ -159,7 +167,7 @@ fun MatchInfoScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Группа",
+                        text = stringResource(R.string.group_text),
                         textAlign = TextAlign.Start,
                         color = MaterialTheme.colors.onPrimary,
                         modifier = Modifier
@@ -183,7 +191,7 @@ fun MatchInfoScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Неделя",
+                        text = stringResource(R.string.week_text),
                         textAlign = TextAlign.Start,
                         color = MaterialTheme.colors.onPrimary,
                         modifier = Modifier
@@ -206,7 +214,7 @@ fun MatchInfoScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Время матча",
+                        text = stringResource(R.string.start_time_match),
                         textAlign = TextAlign.Start,
                         color = MaterialTheme.colors.onPrimary,
                         modifier = Modifier
@@ -221,7 +229,7 @@ fun MatchInfoScreen(
                     )
                 }
                 Text(
-                    text = "Погода",
+                    text = stringResource(R.string.weather_text),
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colors.onPrimary,
@@ -237,7 +245,7 @@ fun MatchInfoScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Описание",
+                        text = stringResource(R.string.weather_description_text),
                         textAlign = TextAlign.Start,
                         color = MaterialTheme.colors.onPrimary,
                         modifier = Modifier
@@ -261,14 +269,14 @@ fun MatchInfoScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Темпиратура",
+                        text = stringResource(R.string.temperature_text),
                         textAlign = TextAlign.Start,
                         color = MaterialTheme.colors.onPrimary,
                         modifier = Modifier
                             .weight(1f)
                     )
                     Text(
-                        text = "${match.weather?.temperature?.celsius ?: "Неизвестно"}C",
+                        text = match.weather?.temperature?.celsius ?: "Неизвестно",
                         textAlign = TextAlign.Center,
                         color = MaterialTheme.colors.onPrimary,
                         modifier = Modifier

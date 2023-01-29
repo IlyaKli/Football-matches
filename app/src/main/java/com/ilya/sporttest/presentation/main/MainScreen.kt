@@ -65,7 +65,8 @@ fun MainScreen(
             yesterdayScreenContent = { MatchListScreen(viewModel = viewModel, day = "yesterday") {
                 navigationState.navigateToMatchInfo(it)
             } },
-            tomorrowScreenContent = { MatchListScreen(viewModel = viewModel, day = "tomorrow") {
+            tomorrowScreenContent = {
+                MatchListScreen(viewModel = viewModel, day = "tomorrow") {
                 navigationState.navigateToMatchInfo(it)
             } },
             matchInfoScreenContent = { match ->

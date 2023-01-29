@@ -3,4 +3,14 @@
     <string name="navigation_item_today">Сегодня</string>
     <string name="navigation_item_yesterday">Вчера</string>
     <string name="navigation_item_tomorrow">Завтра</string>
+    <string name="group_text">Группа</string>
+    <string name="week_text">Неделя</string>
+    <string name="start_time_match">Время матча</string>
+    <string name="weather_text">Погода</string>
+    <string name="weather_description_text">Описание</string>
+    <string name="temperature_text">Темпиратура (°C)</string>
+    <string name="match_status_text">Статус матча</string>
+    <string name="liga_title_text">Лига</string>
+    <string name="country_liga_text">Страна лиги</string>
+    <string name="liga_name_text">Название лиги</string>
 </resources>
