@@ -1,4 +1,4 @@
-package com.ilya.sporttest.navigation
+package com.ilya.sporttest.presentation.navigation
 
 import android.net.Uri
 import com.google.gson.Gson

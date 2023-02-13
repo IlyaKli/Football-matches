@@ -1,4 +1,4 @@
-package com.ilya.sporttest.navigation
+package com.ilya.sporttest.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

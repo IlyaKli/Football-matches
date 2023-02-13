@@ -11,8 +11,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.ilya.sporttest.navigation.AppNavGraph
-import com.ilya.sporttest.navigation.rememberNavigationState
+import com.ilya.sporttest.presentation.navigation.AppNavGraph
+import com.ilya.sporttest.presentation.navigation.rememberNavigationState
 import com.ilya.sporttest.presentation.matchinfo.MatchInfoScreen
 
 @Composable
