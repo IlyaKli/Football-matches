@@ -1,7 +1,7 @@
 package com.ilya.sporttest.presentation.main
 
 import com.ilya.sporttest.R
-import com.ilya.sporttest.navigation.Screen
+import com.ilya.sporttest.presentation.navigation.Screen
 
 sealed class NavigationItem(
     val screen: Screen,

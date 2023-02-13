@@ -1,4 +1,5 @@
-package com.ilya.sporttest.navigation
+package com.ilya.sporttest.presentation.navigation
+
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
@@ -9,16 +10,16 @@ import androidx.navigation.navigation
 import com.google.gson.Gson
 import com.ilya.sporttest.domain.model.Match
 
-fun NavGraphBuilder.tomorrowScreenNavGraph(
-    tomorrowScreenContent: @Composable () -> Unit,
+fun NavGraphBuilder.todayScreenNavGraph(
+    todayScreenContent: @Composable () -> Unit,
     matchInfoScreenContent: @Composable (Match) -> Unit
 ) {
     navigation(
-        startDestination = Screen.MatchListTomorrow.route,
-        route = Screen.Tomorrow.route
+        startDestination = Screen.MatchListToday.route,
+        route = Screen.Today.route
     ) {
-        composable(Screen.MatchListTomorrow.route) {
-            tomorrowScreenContent()
+        composable(Screen.MatchListToday.route) {
+            todayScreenContent()
         }
         composable(
             route = Screen.MatchInfo.route,

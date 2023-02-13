@@ -11,14 +11,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.ilya.sporttest.navigation.AppNavGraph
-import com.ilya.sporttest.navigation.rememberNavigationState
+import com.ilya.sporttest.presentation.navigation.AppNavGraph
+import com.ilya.sporttest.presentation.navigation.rememberNavigationState
 import com.ilya.sporttest.presentation.matchinfo.MatchInfoScreen
 
 @Composable
 fun MainScreen(
     viewModel: MatchesViewModel,
-    onFloatingActionButtonClickListener: () -> Unit
+    onFloatingActionButtonClickListener: () -> Unit,
 ) {
 
     val navigationState = rememberNavigationState()
@@ -44,7 +44,9 @@ fun MainScreen(
                         selected = currentRout == item.screen.route,
                         onClick = { navigationState.navigateTo(item.screen.route) },
                         icon = {
-                            Icon(painter = painterResource(id = item.iconId), contentDescription = null, modifier = Modifier.size(25.dp))
+                            Icon(painter = painterResource(id = item.iconId),
+                                contentDescription = null,
+                                modifier = Modifier.size(25.dp))
                         },
                         label = {
                             Text(text = stringResource(id = item.titleResId))
@@ -59,16 +61,21 @@ fun MainScreen(
 
         AppNavGraph(
             navHostController = navigationState.navHostController,
-            todayScreenContent = { MatchListScreen(viewModel = viewModel, day = "today") {
-                navigationState.navigateToMatchInfo(it)
-            } },
-            yesterdayScreenContent = { MatchListScreen(viewModel = viewModel, day = "yesterday") {
-                navigationState.navigateToMatchInfo(it)
-            } },
+            todayScreenContent = {
+                MatchListScreen(viewModel = viewModel, day = "today") {
+                    navigationState.navigateToMatchInfo(it)
+                }
+            },
+            yesterdayScreenContent = {
+                MatchListScreen(viewModel = viewModel, day = "yesterday") {
+                    navigationState.navigateToMatchInfo(it)
+                }
+            },
             tomorrowScreenContent = {
                 MatchListScreen(viewModel = viewModel, day = "tomorrow") {
-                navigationState.navigateToMatchInfo(it)
-            } },
+                    navigationState.navigateToMatchInfo(it)
+                }
+            },
             matchInfoScreenContent = { match ->
                 MatchInfoScreen(match) {
                     navigationState.navHostController.popBackStack()
